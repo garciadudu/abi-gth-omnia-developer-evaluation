@@ -63,11 +63,11 @@ public class SaleRepository : ISaleRepository
         {
             var connectionString = _context.Database.GetDbConnection().ConnectionString;
 
-            using (var conn = new NpgsqlConnection(string.Concat(connectionString, ";password=4dm1n")))
+            using (var conn = new NpgsqlConnection(string.Concat(connectionString, ";password=Pass@word")))
             {
                 conn.Open();
 
-                var comando = new NpgsqlCommand("select nextval('seq_venda');", conn);
+                var comando = new NpgsqlCommand("CREATE SEQUENCE IF NOT EXISTS seq_venda; select nextval('seq_venda');", conn);
 
                 var value = await comando.ExecuteScalarAsync();
                 
