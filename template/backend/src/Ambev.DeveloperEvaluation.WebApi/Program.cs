@@ -50,6 +50,8 @@ public class Program
                 );
             });
 
+            builder.Services.AddCors();
+
             builder.Services.AddTransient(typeof(IPipelineBehavior<,>), typeof(ValidationBehavior<,>));
 
             var app = builder.Build();
@@ -62,6 +64,8 @@ public class Program
             }
 
             app.UseHttpsRedirection();
+
+            app.UseCors(options => options.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
 
             app.UseAuthentication();
             app.UseAuthorization();
