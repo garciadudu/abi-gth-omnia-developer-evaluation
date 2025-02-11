@@ -1,0 +1,57 @@
+<div>
+
+    <div>
+        <img src="/imgs/carinho.jpeg" width="250px"/>
+    </div>
+
+    <div>
+        <div *ngFor="let item of this.beverageService.pucharse" class="lista">
+
+            <img src='{{item.image}}' width="120px" />
+            
+
+            <p>Descrição: {{item.description}}</p>
+            <p>
+
+                Qtde: {{ item.qtd }} x Preço: {{ item.price | currency:'BRL' }} 
+    
+
+                <span *ngIf="item.desc"> 
+                    Desconto: - {{ item.totalDesc | currency:'BRL' }} OFF
+                </span> 
+
+                Valor Total: 
+                <span *ngIf="item.total">{{ item.total | currency:'BRL' }}
+                </span>
+            </p>
+
+            <div>
+                <button class="btn btn-secondary" (click)="removeItem(item)">Remover Item</button>
+            </div>
+        </div>
+    </div>
+    
+    <div class="totals">
+        <div>
+            <div class="col-sm-4">
+                <p>
+                    Subtotal = {{ this.beverageService.Total() | currency:'BRL'}}
+                </p>
+            </div>
+            <div class="col-sm-4">
+                <p>
+                    Total de Descontos = {{ this.beverageService.TotalDesconto() | currency:'BRL'}} 
+                </p>
+            </div>
+            <div class="col-sm-4">
+                <p>
+                    Total = {{ this.beverageService.Total()-this.beverageService.TotalDesconto() | currency:'BRL'}}
+                </p>
+            </div>
+        </div>
+        
+        <app-customer></app-customer>
+    </div>
+
+    <button type="button" class="btn btn-success espacamento" (click)="continuarComprando()">Continuar Comprando</button>
+</div>
