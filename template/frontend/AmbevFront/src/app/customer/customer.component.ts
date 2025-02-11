@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms'; 
 import { CustomerService } from './customer.service';
 import { NgFor } from '@angular/common';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Filiation } from '../Filiation/filiation.interface';
 import { Customer } from './customer.interface';
 
@@ -29,7 +29,14 @@ export class CustomerComponent implements OnInit {
   ngOnInit(): void {
     var lista: Filiation[] = [];
 
-    this.httpClient.get<Filiation>(this.SERVER_URL+'filiations')
+    var httpOptions = {
+        headers: new HttpHeaders({
+            'Content-Type': 'application/json'
+        })
+    };       
+    
+
+    this.httpClient.get<Filiation>(this.SERVER_URL+'filiations', httpOptions)
     .subscribe((response: any) => {
         
         var filiation = response.data.data;
