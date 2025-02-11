@@ -1,3 +1,33 @@
+1) Crie um usuário sa com a senha Pass@word
+
+2) Crie um database no pgadmin com o nome DeveloperEvaluation
+
+3) Ir até o diretório \Ambev.DeveloperEvaluation\backend\src\Ambev.DeveloperEvaluation.WebApi e rodar dotnet ef database update
+
+4) Cadastar as filiais
+{
+  "codigo": "SP",
+  "nome": "São Paulo"
+}
+{
+  "codigo": "RJ",
+  "nome": "Rio de Janeiro"
+}
+{
+  "codigo": "MG",
+  "nome": "Minas Gerais"
+}
+
+atravês do serviço do swagger quando rodar Filiations POST
+
+https://localhost:7181/swagger/index.html
+
+6) Execute o Projeto Backend no Visual Studio
+
+7) Vá até o caminho deste diretório Ambev.DeveloperEvaluation\frontend\AmbevFront, após a instalação do angular rode ng serve
+
+
+
 # Developer Evaluation Project
 
 `READ CAREFULLY`
